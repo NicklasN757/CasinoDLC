@@ -7,3 +7,7 @@ xvx Team Betting - Jack
 Slot Maskine - Nicklas 
 BlackJack - Mathias
 Spin the wheeeeeeeeel!!!! - Sandra
+
+Team Chat: 
+-----------------------------------------------------------------------------------
+Nicklas: Hej med jer
