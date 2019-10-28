@@ -12,3 +12,4 @@ Team Chat:
 -----------------------------------------------------------------------------------
 Nicklas: Hej med jer
 Grønne: Sup nigga
+Nicklas: Går det godt?
