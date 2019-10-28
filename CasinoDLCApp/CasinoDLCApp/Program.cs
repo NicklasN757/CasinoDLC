@@ -130,6 +130,51 @@ namespace CasinoDLCApp
                     string reply = Console.ReadLine();
                 }
             }
+            void BlackJack(int amount)
+            {
+                //Generating a random card number
+                string[] array = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Es" };
+                Random randomNumber = new Random();
+                int husetsFørsteKort = randomNumber.Next(array.Length);
+                int husetsAndetKort = randomNumber.Next(array.Length);
+                Console.WriteLine("The house got " + array[husetsFørsteKort]);
+                int spillerensFørsteKort = randomNumber.Next(array.Length);
+                int spillerensAndetKort = randomNumber.Next(array.Length);
+                Console.Write("Dine kort er: " + array[spillerensFørsteKort] + " & " + array[spillerensAndetKort]);
+                System.Threading.Thread.Sleep(5000);
+                Console.Clear();
+
+                //If house gets Black Jack
+                Console.WriteLine("The house got " + array[husetsFørsteKort] + " & " + array[husetsAndetKort]);
+                Console.WriteLine("Your cards are: " + array[spillerensFørsteKort] + " & " + array[spillerensAndetKort]);
+                if (husetsFørsteKort == 12 && husetsAndetKort == 8 || husetsFørsteKort == 12 && husetsAndetKort == 9 || husetsFørsteKort == 12 && husetsAndetKort == 10 || husetsFørsteKort == 12 && husetsAndetKort == 11)
+                {
+                    Console.WriteLine("House got BJ");
+                }
+                else if (husetsAndetKort == 12 && husetsFørsteKort == 8 || husetsAndetKort == 12 && husetsFørsteKort == 9 || husetsAndetKort == 12 && husetsFørsteKort == 10 || husetsAndetKort == 12 && husetsFørsteKort == 11)
+                {
+                    Console.WriteLine("House got BJ");
+                }
+
+                //If you get Black Jack
+                if (spillerensFørsteKort == 12 && spillerensAndetKort == 8 || spillerensFørsteKort == 12 && spillerensAndetKort == 9 || spillerensFørsteKort == 12 && spillerensAndetKort == 10 || spillerensFørsteKort == 12 && spillerensAndetKort == 11)
+                {
+                    Console.WriteLine("You got a BJ");
+                }
+                else if (spillerensAndetKort == 12 && spillerensFørsteKort == 8 || spillerensAndetKort == 12 && spillerensFørsteKort == 9 || spillerensAndetKort == 12 && spillerensFørsteKort == 10 || spillerensAndetKort == 12 && spillerensFørsteKort == 11)
+                {
+                    Console.WriteLine("You got a BJ");
+                }
+
+                //You want to draw or stay
+                Console.Write("You want another card write \"Draw\" if you don't want another card write \"Stay\": ");
+                string drawOrStay = Console.ReadLine().ToLower().Trim();
+                if (drawOrStay.Contains("draw"))
+                {
+                    int spillerensTredjeKort = randomNumber.Next(array.Length);
+                    Console.WriteLine("You drew a " + spillerensTredjeKort);
+                }
+            }
         }
 
         static void SpinTheWheel()
