@@ -52,7 +52,7 @@ namespace CasinoDLCApp
                 else if (reply == "5")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Spin The Wheel\".");
-                    SpinTheWheel(playerCasinoCoins);
+                    SpinTheWheel();
                 }
             }
 
@@ -132,8 +132,9 @@ namespace CasinoDLCApp
             }
         }
 
-        static void SpinTheWheel (int coins)
+        static void SpinTheWheel()
         {
+            int coins = 10000;
             // Felter i spillet.
             int ten = 10;
             int hundred = 100;
@@ -143,7 +144,7 @@ namespace CasinoDLCApp
             int[] wheelArray = {ten,ten,ten,ten,hundred,hundred,hundred,thousand,thousand,tenThousand};
             Random randomize = new Random();
 
-            while (coins <= 0)
+            while (coins >= 0)
             {
                 Console.WriteLine("Write your bet!");
                 int playerInput = int.Parse(Console.ReadLine());
