@@ -43,7 +43,7 @@ namespace CasinoDLCApp
                 else if (reply == "3")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Slot Maskine\".");
-                    slotMachine();
+                    slotMachine(playerCasinoCoins);
                 }
                 else if (reply == "4")
                 {
@@ -52,7 +52,7 @@ namespace CasinoDLCApp
                 else if (reply == "5")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Spin The Wheel\".");
-                    SpinTheWheel();
+                    SpinTheWheel(playerCasinoCoins);
                 }
             }
 
@@ -111,30 +111,63 @@ namespace CasinoDLCApp
                 }
             }
 
-            static void slotMachine()
+            static void slotMachine(int coins)
             {
                 Random RND = new Random();
                 bool isRunning = true;
                 int basicPay = 15;
+                int number1;
+                int number2;
+                int number3;
+
+                static int prize(int prize)
+                {
+                    bool isRunning = true;
+                    int numberOfMachiness;
+                    string reply;
+
+                    while (isRunning) {
+                        Console.Write("Hvor mange maskiner vil du spille på: ");
+                        numberOfMachiness = int.Parse(Console.ReadLine());
+                        Console.Write("Er du sikker på at du vil spille på " + numberOfMachiness + " maskiner. Det vil koste dig: " + numberOfMachiness * prize + " coins. (y/n): ");
+                        reply = Console.ReadLine();
+
+                        if (reply.ToLower() == "y")
+                        {
+                            prize *= numberOfMachiness;
+                            isRunning = false;
+                        }
+                    }
+                    return prize;
+                }
 
                 while (isRunning)
                 {
                     Console.WriteLine("Velkommen til vores slot maskine.");
                     Console.WriteLine();
                     Console.WriteLine("0. Tilbage til menuen.");
-                    Console.WriteLine("1. Low-Risk Maskine.");
-                    Console.WriteLine("2. Medium-Risk Maskine.");
-                    Console.WriteLine("3. High-Risk Maskine.");
+                    Console.WriteLine("1. Low-Risk. ("+ basicPay + ". coins)");
+                    Console.WriteLine("2. Medium-Risk. ("+ basicPay*4 +". coins)");
+                    Console.WriteLine("3. High-Risk. ("+ basicPay*10 +". coins)");
                     Console.WriteLine();
                     Console.Write("Skriv hvad for en maskine du vil spille på: ");
                     string reply = Console.ReadLine();
+
+                    if (reply == "0")
+                    {
+                        isRunning = false;
+                        Console.Clear();
+                    }
+                    else if (reply == "1")
+                    {
+                        coins -= basicPay * prize(basicPay);
+                    }
                 }
             }
         }
 
-        static void SpinTheWheel()
+        static void SpinTheWheel(int coins)
         {
-            int coins = 10000;
             // Felter i spillet.
             int ten = 10;
             int hundred = 100;
