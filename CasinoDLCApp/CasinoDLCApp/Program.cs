@@ -38,6 +38,7 @@ namespace CasinoDLCApp
                 else if (reply == "2")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"1v1 Team Betting\".");
+                    teamBetting();
                 }
                 else if (reply == "3")
                 {
@@ -51,6 +52,7 @@ namespace CasinoDLCApp
                 else if (reply == "5")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Spin The Wheel\".");
+                    SpinTheWheel(playerCasinoCoins);
                 }
             }
 
@@ -112,6 +114,21 @@ namespace CasinoDLCApp
             static void slotMachine()
             {
                 Random RND = new Random();
+                bool isRunning = true;
+                int basicPay = 15;
+
+                while (isRunning)
+                {
+                    Console.WriteLine("Velkommen til vores slot maskine.");
+                    Console.WriteLine();
+                    Console.WriteLine("0. Tilbage til menuen.");
+                    Console.WriteLine("1. Low-Risk Maskine.");
+                    Console.WriteLine("2. Medium-Risk Maskine.");
+                    Console.WriteLine("3. High-Risk Maskine.");
+                    Console.WriteLine();
+                    Console.Write("Skriv hvad for en maskine du vil spille på: ");
+                    string reply = Console.ReadLine();
+                }
             }
         }
 
