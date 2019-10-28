@@ -118,30 +118,41 @@ namespace CasinoDLCApp
             int hundred = 100;
             int thousand = 1000;
             int tenThousand = 10000;
-            int minusFifty = -50;
-            int minusFiveHundred = -500;
-            int minusFiveThousand = -5000;
-            int[] wheelArray = {ten,ten,ten,ten,hundred,hundred,hundred,thousand,thousand,tenThousand,minusFifty,minusFifty,minusFiveHundred,minusFiveHundred,minusFiveThousand};
-            Random randomNumber = new Random();
+          
+            int[] wheelArray = {ten,ten,ten,ten,hundred,hundred,hundred,thousand,thousand,tenThousand};
+            Random randomize = new Random();
 
             while (coins <= 0)
             {
                 Console.WriteLine("Write your bet!");
-                string playerInput = Console.ReadLine();
-                
+                int playerInput = int.Parse(Console.ReadLine());
+                int randomNumber = randomize.Next(0, wheelArray.Length);
 
-                /* -- CODE IN PROGRESS --
-                 *  
-                 * randomNumber.Next(0, wheelArray.Length);
-                 * 
-                 * switch (playerInput)
-                 * {
-                 *      case wheelArray[0]:
-                 *          break;
-                 *      default:
-                 *          break;
-                 * }
-                */
+                Console.WriteLine(randomNumber);
+                
+                if (playerInput == wheelArray[randomNumber])
+                {
+                    if (playerInput == ten)
+                    {
+                        coins += 10;
+                    }
+                    else if (playerInput == hundred)
+                    {
+                        coins += 100;
+                    }
+                    else if (playerInput == thousand)
+                    {
+                        coins += 1000;
+                    }
+                    else if (playerInput == tenThousand)
+                    {
+                        coins += 10000;
+                    }
+                } 
+                else
+                {
+                    coins -= 1000;
+                }
 
             }
         }
