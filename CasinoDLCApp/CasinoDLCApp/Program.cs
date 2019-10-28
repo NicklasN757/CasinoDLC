@@ -31,6 +31,7 @@ namespace CasinoDLCApp
                 else if (reply == "1")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Team Bracket Betting\".");
+                    TeamBracketBetting();
                 }
                 else if (reply == "2")
                 {
@@ -49,9 +50,6 @@ namespace CasinoDLCApp
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Spin The Wheel\".");
                 }
             }
-
-            int casinCoins = 10000;
-
 
             static void TeamBracketBetting()
             {
