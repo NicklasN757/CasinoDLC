@@ -9,8 +9,6 @@ namespace CasinoDLCApp
             TeamBracketBetting();
             //Det antal coins du starter med. 
             int playerCasinoCoins = 10000;
-            Console.WriteLine("Du har " + playerCasinoCoins + " Coins lige nu.");
-            Console.ReadLine();
 
 
             int casinCoins = 10000;
@@ -33,6 +31,35 @@ namespace CasinoDLCApp
                 arrayCounter = 0;
                 Console.WriteLine("Ty! Now, please tell me how many people are betting!");
                 int numberOfPeopleBetting = int.Parse(Console.ReadLine());
+            }
+        }
+
+        static void SpinTheWheel (int coins)
+        {
+            // Felter i spillet.
+            int 
+            string[] wheelArray = {"10","10","10","10","100","100","100","1000","1000","10000","-50","-50","-500","-500", "-5000"};
+            Random randomNumber = new Random();
+
+            while (coins <= 0)
+            {
+                Console.WriteLine("Write your bet!");
+                string playerInput = Console.ReadLine();
+                
+
+                /* -- CODE IN PROGRESS --
+                 *  
+                 * randomNumber.Next(0, wheelArray.Length);
+                 * 
+                 * switch (playerInput)
+                 * {
+                 *      case wheelArray[0]:
+                 *          break;
+                 *      default:
+                 *          break;
+                 * }
+                */
+
             }
         }
     }
