@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace CasinoDLCApp
 {
@@ -48,6 +48,7 @@ namespace CasinoDLCApp
                 else if (reply == "4")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Blackjack\".");
+                    BlackJack();
                 }
                 else if (reply == "5")
                 {
@@ -130,7 +131,7 @@ namespace CasinoDLCApp
                     string reply = Console.ReadLine();
                 }
             }
-            void BlackJack(int amount)
+            void BlackJack()
             {
                 //Generating a random card number
                 string[] array = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Es" };
