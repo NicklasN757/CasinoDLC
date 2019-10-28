@@ -9,7 +9,9 @@ namespace CasinoDLCApp
             int playerCasinoCoins = 10000; //Coins du starter med. 
             bool isRunning = true;
 
-            while (isRunning) { 
+
+            while (isRunning)
+            {
                 Console.WriteLine("Du har " + playerCasinoCoins + " Coins lige nu.");
                 Console.WriteLine();
                 Console.WriteLine("0. Lukker dette program.");
@@ -71,9 +73,80 @@ namespace CasinoDLCApp
                 int numberOfPeopleBetting = int.Parse(Console.ReadLine());
             }
 
+            static void teamBetting()
+            {
+                Console.WriteLine("Ready for lose all your gold or become a God of betting");
+                Console.ReadKey();
+                Console.Clear();
+                string redteam = "Red Team";
+                string blueteam = "Blue Team";
+                int Pool = 0;
+                //=========================================================================================================
+                Console.Write("How many people bet on Red Team: "); int numberofpeople1 = int.Parse(Console.ReadLine());
+                Console.Clear();
+                int o = 0;
+                int number = o + 1;
+                int[] goldarray = new int[numberofpeople1];
+                while (o < numberofpeople1)
+                {
+                    Console.Write("Player " + number + ": ");
+                    goldarray[o] = int.Parse(Console.ReadLine());
+                    Pool += goldarray[o];
+                    o++;
+                }
+                //=========================================================================================================
+                Console.Write("How many people bet on Blue Team: "); int numberofpeople2 = int.Parse(Console.ReadLine());
+                Console.Clear();
+                int p = 0;
+                int number2 = p + 1;
+                int[] goldarray2 = new int[numberofpeople2];
+                while (p < numberofpeople2)
+                {
+                    Console.Write("Player " + number2 + ": ");
+                    goldarray[p] = int.Parse(Console.ReadLine());
+                    Pool += goldarray[p];
+                    o++;
+                }
+            }
+
             static void slotMachine()
             {
                 Random RND = new Random();
+            }
+        }
+
+        static void SpinTheWheel (int coins)
+        {
+            // Felter i spillet.
+            int ten = 10;
+            int hundred = 100;
+            int thousand = 1000;
+            int tenThousand = 10000;
+            int minusFifty = -50;
+            int minusFiveHundred = -500;
+            int minusFiveThousand = -5000;
+            int[] wheelArray = {ten,ten,ten,ten,hundred,hundred,hundred,thousand,thousand,tenThousand,minusFifty,minusFifty,minusFiveHundred,minusFiveHundred,minusFiveThousand};
+            Random randomNumber = new Random();
+
+            while (coins <= 0)
+            {
+                Console.WriteLine("Write your bet!");
+                string playerInput = Console.ReadLine();
+                
+
+                /* -- CODE IN PROGRESS --
+                 *  
+                 * randomNumber.Next(0, wheelArray.Length);
+                 * 
+                 * switch (playerInput)
+                 * {
+                 *      case wheelArray[0]:
+                 *          break;
+                 *      default:
+                 *          break;
+                 * }
+                */
+
             }
         }
     }
