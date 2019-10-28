@@ -51,23 +51,92 @@ namespace CasinoDLCApp
                 }
             }
 
-            static void TeamBracketBetting()
+            void TeamBracketBetting()
             {
                 int arrayCounter = 0; //Used to count arrays.
+                bool peopleAreDoingSomething = true; //Used in some while loops to catch errors
+                int numberOfTeams = 0;
 
-                Console.WriteLine("Hello! You have chosen to bet on Team Brackets! Please tell me how many teams are in the bracket!");
-                int numberOfTeams = int.Parse(Console.ReadLine());
+                while (peopleAreDoingSomething == true)
+                {
+                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! Please tell me how many teams are in the bracket!");
 
-                string[] teamNames = new string[numberOfTeams];
+                    try
+                    {
+                        numberOfTeams = int.Parse(Console.ReadLine());
+                        peopleAreDoingSomething = false;
+                    } 
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Hey! That's not a valid answer!");
+                    }
+                }
+
                 Console.WriteLine("Now! Please tell me the names of the teams!");
+
+                string[] teamNames = new string[numberOfTeams]; //creating an array that is as long as the amount of teams
                 while (arrayCounter < numberOfTeams)
                 {
                     teamNames[arrayCounter] = Console.ReadLine();
                     arrayCounter++;
                 }
                 arrayCounter = 0;
-                Console.WriteLine("Ty! Now, please tell me how many people are betting!");
-                int numberOfPeopleBetting = int.Parse(Console.ReadLine());
+
+                int numberOfBetters = 0;
+                peopleAreDoingSomething = true;
+                while (peopleAreDoingSomething == true)
+                {
+                    Console.WriteLine("Now, please tell me how many people are betting!");
+
+                    try
+                    {
+                        numberOfBetters = int.Parse(Console.ReadLine());
+                        peopleAreDoingSomething = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Hey! That's not a valid answer!");
+                    }
+                }
+
+                int[] betterMoney = new int[numberOfBetters];
+                string[] betterNames = new string[numberOfBetters];
+                Console.WriteLine("Now! Please tell me the names of the betters!");
+                while (arrayCounter < numberOfBetters)
+                {
+                    betterNames[arrayCounter] = Console.ReadLine();
+                    arrayCounter++;
+                }
+                arrayCounter = 0;
+
+                int[] betterBets = new int[numberOfBetters];
+                while (arrayCounter < numberOfBetters)
+                {
+                    Console.WriteLine("Now please tell me how much money " + betterNames[arrayCounter] + " is betting");
+
+                    try
+                    {
+                        betterBets[arrayCounter] = int.Parse(Console.ReadLine());
+                        betterMoney[arrayCounter] = 10000 - betterBets[arrayCounter];
+                        arrayCounter++;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Hey! That's not a valid answer!");
+                    }
+                }
+                arrayCounter = 0;
+
+                Console.WriteLine("The bets are in!");
+                while (arrayCounter < numberOfBetters)
+                {
+                    Console.WriteLine(betterNames[arrayCounter] + " is betting " + betterBets[arrayCounter] + " coin, and has " + betterMoney[arrayCounter] + " coins left.");
+                    arrayCounter++;
+                }
+                arrayCounter = 0;
+
+
+
             }
         }
     }
