@@ -6,7 +6,10 @@ namespace CasinoDLCApp
     {
         static void Main(string[] args)
         {
-            int casinCoins = 10000;
+            //Det antal coins du starter med. 
+            int playerCasinoCoins = 10000;
+
+
         }
     }
 }
