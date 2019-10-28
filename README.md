@@ -11,3 +11,4 @@ Spin the wheeeeeeeeel!!!! - Sandra
 Team Chat: 
 -----------------------------------------------------------------------------------
 Nicklas: Hej med jer
+Grønne: Sup nigga
