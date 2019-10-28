@@ -6,7 +6,7 @@ namespace CasinoDLCApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int casinCoins = 10000;
         }
     }
 }
