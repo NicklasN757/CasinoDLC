@@ -40,6 +40,7 @@ namespace CasinoDLCApp
                 else if (reply == "3")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Slot Maskine\".");
+                    slotMachine();
                 }
                 else if (reply == "4")
                 {
@@ -68,6 +69,11 @@ namespace CasinoDLCApp
                 arrayCounter = 0;
                 Console.WriteLine("Ty! Now, please tell me how many people are betting!");
                 int numberOfPeopleBetting = int.Parse(Console.ReadLine());
+            }
+
+            static void slotMachine()
+            {
+                Random RND = new Random();
             }
         }
     }
