@@ -6,14 +6,9 @@ namespace CasinoDLCApp
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            TeamBracketBetting();
-            //Det antal coins du starter med. 
-            int playerCasinoCoins = 10000;
-=======
             int playerCasinoCoins = 10000; //Coins du starter med. 
             bool isRunning = true;
->>>>>>> master
+
 
             while (isRunning) { 
                 Console.WriteLine("Du har " + playerCasinoCoins + " Coins lige nu.");
@@ -80,8 +75,14 @@ namespace CasinoDLCApp
         static void SpinTheWheel (int coins)
         {
             // Felter i spillet.
-            int 
-            string[] wheelArray = {"10","10","10","10","100","100","100","1000","1000","10000","-50","-50","-500","-500", "-5000"};
+            int ten = 10;
+            int hundred = 100;
+            int thousand = 1000;
+            int tenThousand = 10000;
+            int minusFifty = -50;
+            int minusFiveHundred = -500;
+            int minusFiveThousand = -5000;
+            int[] wheelArray = {ten,ten,ten,ten,hundred,hundred,hundred,thousand,thousand,tenThousand,minusFifty,minusFifty,minusFiveHundred,minusFiveHundred,minusFiveThousand};
             Random randomNumber = new Random();
 
             while (coins <= 0)
