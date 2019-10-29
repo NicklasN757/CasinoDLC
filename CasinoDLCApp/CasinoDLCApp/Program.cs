@@ -6,12 +6,16 @@ namespace CasinoDLCApp
     {
         static void Main(string[] args)
         {
-            int playerCasinoCoins = 10000; //Coins du starter med. 
+            int playerCasinoCoins = 10000; //Coins you start with. 
+            string playerName;
             bool isRunning = true;
 
 
             while (isRunning)
             {
+                Console.Write("What your name? -> ");
+                playerName = Console.ReadLine();
+                Console.WriteLine("Hello and Welcome to the Casino " + playerName + "." );
                 Console.WriteLine("Du har " + playerCasinoCoins + " Coins lige nu.");
                 Console.WriteLine();
                 Console.WriteLine("0. Lukker dette program.");
@@ -382,52 +386,52 @@ namespace CasinoDLCApp
                     Console.WriteLine("You drew a " + spillerensTredjeKort);
                 }
             }
-        }
-
-        static void SpinTheWheel(int coins)
-        {
-            // Felter i spillet.
-            int ten = 10;
-            int hundred = 100;
-            int thousand = 1000;
-            int tenThousand = 10000;
-          
-            int[] wheelArray = {ten,ten,ten,ten,hundred,hundred,hundred,thousand,thousand,tenThousand};
-            Random randomize = new Random();
-
-            while (coins >= 0)
+            static void SpinTheWheel(int coins)
             {
-                Console.WriteLine("Write your bet!");
-                int playerInput = int.Parse(Console.ReadLine());
-                int randomNumber = randomize.Next(0, wheelArray.Length);
+                // Felter i spillet.
+                int ten = 10;
+                int hundred = 100;
+                int thousand = 1000;
+                int tenThousand = 10000;
 
-                Console.WriteLine(randomNumber);
-                
-                if (playerInput == wheelArray[randomNumber])
+                int[] wheelArray = { ten, ten, ten, ten, hundred, hundred, hundred, thousand, thousand, tenThousand };
+                Random randomize = new Random();
+
+                while (coins >= 0)
                 {
-                    if (playerInput == ten)
+                    Console.WriteLine("Write your bet!");
+                    int playerInput = int.Parse(Console.ReadLine());
+                    int randomNumber = randomize.Next(0, wheelArray.Length);
+
+                    Console.WriteLine(randomNumber);
+
+                    if (playerInput == wheelArray[randomNumber])
                     {
-                        coins += 10;
+                        if (playerInput == ten)
+                        {
+                            coins += 10;
+                        }
+                        else if (playerInput == hundred)
+                        {
+                            coins += 100;
+                        }
+                        else if (playerInput == thousand)
+                        {
+                            coins += 1000;
+                        }
+                        else if (playerInput == tenThousand)
+                        {
+                            coins += 10000;
+                        }
                     }
-                    else if (playerInput == hundred)
+                    else
                     {
-                        coins += 100;
+                        coins -= 1000;
                     }
-                    else if (playerInput == thousand)
-                    {
-                        coins += 1000;
-                    }
-                    else if (playerInput == tenThousand)
-                    {
-                        coins += 10000;
-                    }
-                } 
-                else
-                {
-                    coins -= 1000;
+
                 }
-
             }
         }
+
     }
 }
