@@ -234,6 +234,11 @@ namespace CasinoDLCApp
                             totalWin += prize * multipler;
                             Console.WriteLine("Du vandt " + (prize * multipler) + " coins.");
                         }
+                        else if (number1 == number2)
+                        {
+                            totalWin += prize * (multipler / 2);
+                            Console.WriteLine("Du vandt " + (prize * (multipler / 2)) + " coins.");
+                        }
                         else
                         {
                             Console.WriteLine("Du vandt ikke. Bedre held næste gang.");
@@ -254,6 +259,7 @@ namespace CasinoDLCApp
                     Console.WriteLine("1. Low-Risk. ("+ basicPay + ". coins)");
                     Console.WriteLine("2. Medium-Risk. ("+ basicPay*4 +". coins)");
                     Console.WriteLine("3. High-Risk. ("+ basicPay*10 +". coins)");
+                    Console.WriteLine("4. Super High-Risk. ("+basicPay*65+". coins)");
                     Console.WriteLine();
                     Console.Write("Skriv hvad for en maskine du vil spille på: ");
                     string reply = Console.ReadLine();
@@ -265,7 +271,7 @@ namespace CasinoDLCApp
                     }
                     else if (reply == "1")
                     {
-                        multipler = 5;
+                        multipler = 6;
                         risk = 3;
                         prize = basicPay;
                         totalMachinesss = numberOfMachiness();
@@ -284,7 +290,7 @@ namespace CasinoDLCApp
                     }
                     else if (reply == "2")
                     {
-                        multipler = 12;
+                        multipler = 16;
                         risk = 6;
                         prize = basicPay*4;
                         totalMachinesss = numberOfMachiness();
@@ -303,9 +309,28 @@ namespace CasinoDLCApp
                     }
                     else if (reply == "3")
                     {
-                        multipler = 25;
+                        multipler = 32;
                         risk = 9;
                         prize = basicPay * 10;
+                        totalMachinesss = numberOfMachiness();
+                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
+
+                        if (prizeOrPrizeCheck != -1)
+                        {
+                            coins -= prizeOrPrizeCheck;
+                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
+                            System.Threading.Thread.Sleep(6000);
+                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
+                            Console.WriteLine("Du vandt en total på " + wins + " coins");
+                            coins += wins;
+                            Console.WriteLine("Du har nu " + coins + " coins.");
+                        }
+                    }
+                    else if (reply == "4")
+                    {
+                        multipler = 100;
+                        risk = 21;
+                        prize = basicPay * 65;
                         totalMachinesss = numberOfMachiness();
                         prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
 
