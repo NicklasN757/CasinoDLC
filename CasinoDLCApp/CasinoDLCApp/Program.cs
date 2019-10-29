@@ -65,7 +65,7 @@ namespace CasinoDLCApp
 
                 while (peopleAreDoingSomething == true)
                 {
-                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! Please tell me how many teams are in the bracket!");
+                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! This is a protoype, so please jsut write the number 8!");
 
                     try
                     {
@@ -88,7 +88,7 @@ namespace CasinoDLCApp
             {
                 int arrayCounter = 0;
 
-                Console.WriteLine("Now! Please tell me the names of the teams!");
+                Console.WriteLine("Now! Please tell me the names of the teams in order of which they fight in!");
 
                 string[] teamNames = new string[numberOfTeams]; //creating an array that is as long as the amount of teams
                 while (arrayCounter < numberOfTeams)
@@ -106,14 +106,20 @@ namespace CasinoDLCApp
                         int matches = numberOfTeams / 2;
                         int round = numberOfTeams / 4;
 
-                        Random random = new Random();
-                        int randomNumber = random.Next(1, numberOfTeams);
+                        string teamOne = teamNames[arrayCounter];
+                        Console.WriteLine(teamNames[arrayCounter]);
+                        arrayCounter++;
+                        string teamTwo = teamNames[arrayCounter];
+                        Console.WriteLine(teamNames[arrayCounter]);
+                        arrayCounter++;
+                        Console.WriteLine("Who are you betting on winning this match?");
+                        string bet = Console.ReadLine();
 
-                        Console.WriteLine(teamNames[arrayCounter]);
-                        arrayCounter++;
-                        Console.WriteLine(teamNames[arrayCounter]);
-                        arrayCounter++;
-                        Console.WriteLine("Who are you betting on to win this match?");
+
+                        if (bet.ToLower().Contains(teamOne))
+                        {
+
+                        }
                     }
                 }
             }
