@@ -33,7 +33,7 @@ namespace CasinoDLCApp
                 else if (reply == "1")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Team Bracket Betting\".");
-                    TeamBracketBetting(playerCasinoCoins);
+                    TeamBracketBetting();
                 }
                 else if (reply == "2")
                 {
@@ -57,7 +57,7 @@ namespace CasinoDLCApp
                 }
             }
 
-            static void TeamBracketBetting(int coins)
+            void TeamBracketBetting()
             {
                 int arrayCounter = 0; //Used to count arrays.
                 bool peopleAreDoingSomething = true; //Used in some while loops to catch errors
@@ -65,30 +65,24 @@ namespace CasinoDLCApp
 
                 while (peopleAreDoingSomething == true)
                 {
+<<<<<<< 2047ccd05941f3a1cca4babf91ecee91d36d76d8
                     Console.WriteLine("Hello! You have chosen to bet on Team Brackets! This is a protoype, so please just write the number 8!");
+=======
+                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! Please tell me how many teams are in the bracket!");
+>>>>>>> gay
 
                     try
                     {
                         numberOfTeams = int.Parse(Console.ReadLine());
                         peopleAreDoingSomething = false;
-                    } 
+                    }
                     catch (Exception)
                     {
                         Console.WriteLine("Hey! That's not a valid answer!");
                     }
                 }
 
-                bracketCalculation(numberOfTeams);
-                
-
-
-            }
-
-            static void bracketCalculation(int numberOfTeams)
-            {
-                int arrayCounter = 0;
-
-                Console.WriteLine("Now! Please tell me the names of the teams in order of which they fight in!");
+                Console.WriteLine("Now! Please tell me the names of the teams!");
 
                 string[] teamNames = new string[numberOfTeams]; //creating an array that is as long as the amount of teams
                 while (arrayCounter < numberOfTeams)
@@ -98,9 +92,11 @@ namespace CasinoDLCApp
                 }
                 arrayCounter = 0;
 
-                bool doingSomething = true;
-                while (doingSomething == true)
+                int numberOfBetters = 0;
+                peopleAreDoingSomething = true;
+                while (peopleAreDoingSomething == true)
                 {
+<<<<<<< 2047ccd05941f3a1cca4babf91ecee91d36d76d8
                     int matches = numberOfTeams / 2;
                     int round = numberOfTeams / 4;
                     string[] teamNumbers = new string[numberOfTeams];
@@ -119,10 +115,63 @@ namespace CasinoDLCApp
                 if (bet.ToLower().Contains(teamNumbers[))
                     {
 
+=======
+                    Console.WriteLine("Now, please tell me how many people are betting!");
+
+                    try
+                    {
+                        numberOfBetters = int.Parse(Console.ReadLine());
+                        peopleAreDoingSomething = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Hey! That's not a valid answer!");
+                    }
                 }
+
+                int[] betterMoney = new int[numberOfBetters];
+                string[] betterNames = new string[numberOfBetters];
+                Console.WriteLine("Now! Please tell me the names of the betters!");
+                while (arrayCounter < numberOfBetters)
+                {
+                    betterNames[arrayCounter] = Console.ReadLine();
+                    arrayCounter++;
+                }
+                arrayCounter = 0;
+
+                int[] betterBets = new int[numberOfBetters];
+                while (arrayCounter < numberOfBetters)
+                {
+                    Console.WriteLine("Now please tell me how much money " + betterNames[arrayCounter] + " is betting");
+
+                    try
+                    {
+                        betterBets[arrayCounter] = int.Parse(Console.ReadLine());
+                        betterMoney[arrayCounter] = 10000 - betterBets[arrayCounter];
+                        arrayCounter++;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Hey! That's not a valid answer!");
+                    }
+>>>>>>> gay
+                }
+                arrayCounter = 0;
+
+                Console.WriteLine("The bets are in!");
+                while (arrayCounter < numberOfBetters)
+                {
+                    Console.WriteLine(betterNames[arrayCounter] + " is betting " + betterBets[arrayCounter] + " coin, and has " + betterMoney[arrayCounter] + " coins left.");
+                    arrayCounter++;
+                }
+                arrayCounter = 0;
+
+
+
             }
 
             static void teamBetting()
+            
             {
                 Console.WriteLine("Ready for lose all your gold or become a God of betting");
                 Console.ReadKey();
@@ -135,33 +184,65 @@ namespace CasinoDLCApp
                 Console.Clear();
                 int o = 0;
                 int number = o + 1;
+                int RedSum = 0;
                 int[] goldarray = new int[numberofpeople1];
                 while (o < numberofpeople1)
                 {
+                    number = o + 1;
                     Console.Write("Player " + number + ": ");
                     goldarray[o] = int.Parse(Console.ReadLine());
                     Pool += goldarray[o];
+                    RedSum += goldarray[o];
                     o++;
+                    Console.Clear();
                 }
                 //=========================================================================================================
                 Console.Write("How many people bet on Blue Team: "); int numberofpeople2 = int.Parse(Console.ReadLine());
                 Console.Clear();
                 int p = 0;
+                int blueSum = 0;
                 int number2 = p + 1;
                 int[] goldarray2 = new int[numberofpeople2];
                 while (p < numberofpeople2)
                 {
+                    number2 = p + 1;
                     Console.Write("Player " + number2 + ": ");
                     goldarray[p] = int.Parse(Console.ReadLine());
+
                     Pool += goldarray[p];
+                    blueSum += goldarray[p];
                     p++;
+                    Console.Clear();
                 }
+                int RedRatio = (Pool / RedSum);
+                int blueRatio = (Pool / blueSum);
+                Console.WriteLine("Lets see how many gold in our Pool!!      ");
+                Console.ReadLine();
+                Console.Write(Pool);
+                Console.WriteLine("");
+                Random randomnumber = new Random();
+                int Winlose = randomnumber.Next(0, 2);
+                if (Winlose == 0)
+                {
+                    Console.WriteLine("Red win!!");
 
 
 
-
+                }
+                else
+                {
+                    Console.WriteLine("Blue win!!");
+                }
             }
 
+<<<<<<< 2047ccd05941f3a1cca4babf91ecee91d36d76d8
+=======
+        
+
+
+        
+
+>>>>>>> gay
             static void slotMachine(int coins)
             {
                 Random RND = new Random();
@@ -191,6 +272,7 @@ namespace CasinoDLCApp
                     }
                     return prize;
                 }
+<<<<<<< 2047ccd05941f3a1cca4babf91ecee91d36d76d8
 
                     int i = 0;
                     while(i < totalCount)
@@ -227,6 +309,8 @@ namespace CasinoDLCApp
                     Console.Clear();
                     return Convert.ToInt32(totalWin);
                 }
+=======
+>>>>>>> gay
 
                 while (isRunning)
                 {
@@ -236,7 +320,6 @@ namespace CasinoDLCApp
                     Console.WriteLine("1. Low-Risk. ("+ basicPay + ". coins)");
                     Console.WriteLine("2. Medium-Risk. ("+ basicPay*4 +". coins)");
                     Console.WriteLine("3. High-Risk. ("+ basicPay*10 +". coins)");
-                    Console.WriteLine("4. Super High-Risk. ("+basicPay*65+". coins)");
                     Console.WriteLine();
                     Console.Write("Skriv hvad for en maskine du vil spille på: ");
                     string reply = Console.ReadLine();
@@ -248,79 +331,7 @@ namespace CasinoDLCApp
                     }
                     else if (reply == "1")
                     {
-                        multipler = 6;
-                        risk = 3;
-                        prize = basicPay;
-                        totalMachinesss = numberOfMachiness();
-                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
-
-                        if (prizeOrPrizeCheck != -1)
-                        {
-                            coins -= prizeOrPrizeCheck;
-                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                            System.Threading.Thread.Sleep(6000);
-                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                            Console.WriteLine("Du vandt en total på " + wins + " coins");
-                            coins += wins;
-                            Console.WriteLine("Du har nu " + coins + " coins.");
-                        }
-                    }
-                    else if (reply == "2")
-                    {
-                        multipler = 16;
-                        risk = 6;
-                        prize = basicPay*4;
-                        totalMachinesss = numberOfMachiness();
-                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
-
-                        if (prizeOrPrizeCheck != -1)
-                        {
-                            coins -= prizeOrPrizeCheck;
-                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                            System.Threading.Thread.Sleep(6000);
-                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                            Console.WriteLine("Du vandt en total på " + wins + " coins");
-                            coins += wins;
-                            Console.WriteLine("Du har nu " + coins + " coins.");
-                        }
-                    }
-                    else if (reply == "3")
-                    {
-                        multipler = 32;
-                        risk = 9;
-                        prize = basicPay * 10;
-                        totalMachinesss = numberOfMachiness();
-                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
-
-                        if (prizeOrPrizeCheck != -1)
-                        {
-                            coins -= prizeOrPrizeCheck;
-                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                            System.Threading.Thread.Sleep(6000);
-                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                            Console.WriteLine("Du vandt en total på " + wins + " coins");
-                            coins += wins;
-                            Console.WriteLine("Du har nu " + coins + " coins.");
-                        }
-                    }
-                    else if (reply == "4")
-                    {
-                        multipler = 100;
-                        risk = 21;
-                        prize = basicPay * 65;
-                        totalMachinesss = numberOfMachiness();
-                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
-
-                        if (prizeOrPrizeCheck != -1)
-                        {
-                            coins -= prizeOrPrizeCheck;
-                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                            System.Threading.Thread.Sleep(6000);
-                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                            Console.WriteLine("Du vandt en total på " + wins + " coins");
-                            coins += wins;
-                            Console.WriteLine("Du har nu " + coins + " coins.");
-                        }
+                        coins -= basicPay * prize(basicPay);
                     }
                 }
             }
