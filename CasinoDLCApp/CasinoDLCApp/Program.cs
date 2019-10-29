@@ -43,7 +43,7 @@ namespace CasinoDLCApp
                 else if (reply == "3")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Slot Maskine\".");
-                    slotMachine(playerCasinoCoins);
+                    playerCasinoCoins = slotMachine(playerCasinoCoins);
                 }
                 else if (reply == "4")
                 {
@@ -65,7 +65,7 @@ namespace CasinoDLCApp
 
                 while (peopleAreDoingSomething == true)
                 {
-                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! This is a protoype, so please just write the number 8!");
+                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! This is a protoype, so please jsut write the number 8!");
 
                     try
                     {
@@ -101,24 +101,26 @@ namespace CasinoDLCApp
                 bool doingSomething = true;
                 while (doingSomething == true)
                 {
-                    int matches = numberOfTeams / 2;
-                    int round = numberOfTeams / 4;
-                    string[] teamNumbers = new string[numberOfTeams];
-                    teamNumbers[arrayCounter] = teamNames[arrayCounter];
-                    Console.WriteLine(teamNames[arrayCounter]);
-                    arrayCounter++;
-                    teamNumbers[arrayCounter] = teamNames[arrayCounter];
-                    Console.WriteLine(teamNames[arrayCounter]);
-                    arrayCounter++;
-
-                    Console.WriteLine("------------------------------------------");
-                    Console.WriteLine("Who are you betting on winning this match?");
-                    string bet = Console.ReadLine();
-                    Console.WriteLine("------------------------------------------");
-                }
-                if (bet.ToLower().Contains(teamNumbers[))
+                    if (numberOfTeams % 4 == 0)
                     {
+                        int matches = numberOfTeams / 2;
+                        int round = numberOfTeams / 4;
 
+                        string teamOne = teamNames[arrayCounter];
+                        Console.WriteLine(teamNames[arrayCounter]);
+                        arrayCounter++;
+                        string teamTwo = teamNames[arrayCounter];
+                        Console.WriteLine(teamNames[arrayCounter]);
+                        arrayCounter++;
+                        Console.WriteLine("Who are you betting on winning this match?");
+                        string bet = Console.ReadLine();
+
+
+                        if (bet.ToLower().Contains(teamOne))
+                        {
+
+                        }
+                    }
                 }
             }
 
@@ -158,35 +160,60 @@ namespace CasinoDLCApp
                 }
             }
 
-            static void slotMachine(int coins)
+            static int slotMachine(int coins)
             {
-                Random RND = new Random();
                 bool isRunning = true;
                 int basicPay = 15;
-                int number1;
-                int number2;
-                int number3;
+                int totalMachinesss;
+                int prize;
+                int risk;
+                int prizeOrPrizeCheck;
+                double multipler;
 
-                static int prize(int prize)
+                static int totalPrize(int prize, int totalMachiness, int coins)
                 {
                     bool isRunning = true;
-                    int numberOfMachiness;
                     string reply;
 
                     while (isRunning) {
-                        Console.Write("Hvor mange maskiner vil du spille på: ");
-                        numberOfMachiness = int.Parse(Console.ReadLine());
-                        Console.Write("Er du sikker på at du vil spille på " + numberOfMachiness + " maskiner. Det vil koste dig: " + numberOfMachiness * prize + " coins. (y/n): ");
+                        Console.Write("Er du sikker på at du vil spille på " + totalMachiness + " maskiner. Det vil koste dig: " + totalMachiness * prize + " coins. (y/n): ");
                         reply = Console.ReadLine();
+                        int totalPrize = totalMachiness * prize;
 
-                        if (reply.ToLower() == "y")
+                        if (totalPrize > coins)
                         {
-                            prize *= numberOfMachiness;
+                            Console.WriteLine();
+                            Console.WriteLine("Du har desvære ikke nok coins. Prøve igen!");
+                            Console.WriteLine();
+                            prize = -1;
                             isRunning = false;
                         }
+
+                        else if (reply.ToLower() == "y")
+                        {
+                            prize *= totalMachiness;
+                            isRunning = false;
+                            Console.Clear();
+                        }
+                        else if (reply.ToLower() == "n") 
+                        {
+                            isRunning = false;
+                        }
+
                     }
                     return prize;
                 }
+                static int numberOfMachiness()
+                {
+                    int numberOfMachiness;
+                    Console.Write("Hvor mange maskiner vil du spille på: ");
+                    numberOfMachiness = int.Parse(Console.ReadLine());
+                    return numberOfMachiness;
+                }
+                static int machineLoop(int totalCount, int prize, int risk, double multipler)
+                {
+                    Random RND = new Random();
+                    double totalWin = 0;
 
                     int i = 0;
                     while(i < totalCount)
@@ -319,6 +346,7 @@ namespace CasinoDLCApp
                         }
                     }
                 }
+                return coins;
             }
             void BlackJack()
             {
