@@ -33,7 +33,7 @@ namespace CasinoDLCApp
                 else if (reply == "1")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Team Bracket Betting\".");
-                    TeamBracketBetting();
+                    TeamBracketBetting(playerCasinoCoins);
                 }
                 else if (reply == "2")
                 {
@@ -57,7 +57,7 @@ namespace CasinoDLCApp
                 }
             }
 
-            void TeamBracketBetting()
+            static void TeamBracketBetting(int coins)
             {
                 int arrayCounter = 0; //Used to count arrays.
                 bool peopleAreDoingSomething = true; //Used in some while loops to catch errors
@@ -65,7 +65,7 @@ namespace CasinoDLCApp
 
                 while (peopleAreDoingSomething == true)
                 {
-                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! Please tell me how many teams are in the bracket!");
+                    Console.WriteLine("Hello! You have chosen to bet on Team Brackets! This is a protoype, so please jsut write the number 8!");
 
                     try
                     {
@@ -78,7 +78,17 @@ namespace CasinoDLCApp
                     }
                 }
 
-                Console.WriteLine("Now! Please tell me the names of the teams!");
+                bracketCalculation(numberOfTeams);
+                
+
+
+            }
+
+            static void bracketCalculation(int numberOfTeams)
+            {
+                int arrayCounter = 0;
+
+                Console.WriteLine("Now! Please tell me the names of the teams in order of which they fight in!");
 
                 string[] teamNames = new string[numberOfTeams]; //creating an array that is as long as the amount of teams
                 while (arrayCounter < numberOfTeams)
@@ -88,61 +98,30 @@ namespace CasinoDLCApp
                 }
                 arrayCounter = 0;
 
-                int numberOfBetters = 0;
-                peopleAreDoingSomething = true;
-                while (peopleAreDoingSomething == true)
+                bool doingSomething = true;
+                while (doingSomething == true)
                 {
-                    Console.WriteLine("Now, please tell me how many people are betting!");
-
-                    try
+                    if (numberOfTeams % 4 == 0)
                     {
-                        numberOfBetters = int.Parse(Console.ReadLine());
-                        peopleAreDoingSomething = false;
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Hey! That's not a valid answer!");
-                    }
-                }
+                        int matches = numberOfTeams / 2;
+                        int round = numberOfTeams / 4;
 
-                int[] betterMoney = new int[numberOfBetters];
-                string[] betterNames = new string[numberOfBetters];
-                Console.WriteLine("Now! Please tell me the names of the betters!");
-                while (arrayCounter < numberOfBetters)
-                {
-                    betterNames[arrayCounter] = Console.ReadLine();
-                    arrayCounter++;
-                }
-                arrayCounter = 0;
-
-                int[] betterBets = new int[numberOfBetters];
-                while (arrayCounter < numberOfBetters)
-                {
-                    Console.WriteLine("Now please tell me how much money " + betterNames[arrayCounter] + " is betting");
-
-                    try
-                    {
-                        betterBets[arrayCounter] = int.Parse(Console.ReadLine());
-                        betterMoney[arrayCounter] = 10000 - betterBets[arrayCounter];
+                        string teamOne = teamNames[arrayCounter];
+                        Console.WriteLine(teamNames[arrayCounter]);
                         arrayCounter++;
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Hey! That's not a valid answer!");
+                        string teamTwo = teamNames[arrayCounter];
+                        Console.WriteLine(teamNames[arrayCounter]);
+                        arrayCounter++;
+                        Console.WriteLine("Who are you betting on winning this match?");
+                        string bet = Console.ReadLine();
+
+
+                        if (bet.ToLower().Contains(teamOne))
+                        {
+
+                        }
                     }
                 }
-                arrayCounter = 0;
-
-                Console.WriteLine("The bets are in!");
-                while (arrayCounter < numberOfBetters)
-                {
-                    Console.WriteLine(betterNames[arrayCounter] + " is betting " + betterBets[arrayCounter] + " coin, and has " + betterMoney[arrayCounter] + " coins left.");
-                    arrayCounter++;
-                }
-                arrayCounter = 0;
-
-
-
             }
 
             static void teamBetting()
