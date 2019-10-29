@@ -167,9 +167,10 @@ namespace CasinoDLCApp
                 int totalMachinesss;
                 int prize;
                 int risk;
+                int prizeOrPrizeCheck;
                 double multipler;
 
-                static int totalPrize(int prize, int totalMachiness)
+                static int totalPrize(int prize, int totalMachiness, int coins)
                 {
                     bool isRunning = true;
                     string reply;
@@ -177,13 +178,28 @@ namespace CasinoDLCApp
                     while (isRunning) {
                         Console.Write("Er du sikker på at du vil spille på " + totalMachiness + " maskiner. Det vil koste dig: " + totalMachiness * prize + " coins. (y/n): ");
                         reply = Console.ReadLine();
+                        int totalPrize = totalMachiness * prize;
 
-                        if (reply.ToLower() == "y")
+                        if (totalPrize > coins)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Du har desvære ikke nok coins. Prøve igen!");
+                            Console.WriteLine();
+                            prize = -1;
+                            isRunning = false;
+                        }
+
+                        else if (reply.ToLower() == "y")
                         {
                             prize *= totalMachiness;
                             isRunning = false;
                             Console.Clear();
                         }
+                        else if (reply.ToLower() == "n") 
+                        {
+                            isRunning = false;
+                        }
+
                     }
                     return prize;
                 }
@@ -253,13 +269,18 @@ namespace CasinoDLCApp
                         risk = 3;
                         prize = basicPay;
                         totalMachinesss = numberOfMachiness();
-                        coins -= totalPrize(prize, totalMachinesss);
-                        Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                        System.Threading.Thread.Sleep(6000);
-                        int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                        Console.WriteLine("Du vandt en total på " + wins + " coins");
-                        coins += wins;
-                        Console.WriteLine("Du har nu " + coins + " coins.");
+                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
+
+                        if (prizeOrPrizeCheck != -1)
+                        {
+                            coins -= prizeOrPrizeCheck;
+                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
+                            System.Threading.Thread.Sleep(6000);
+                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
+                            Console.WriteLine("Du vandt en total på " + wins + " coins");
+                            coins += wins;
+                            Console.WriteLine("Du har nu " + coins + " coins.");
+                        }
                     }
                     else if (reply == "2")
                     {
@@ -267,13 +288,18 @@ namespace CasinoDLCApp
                         risk = 6;
                         prize = basicPay*4;
                         totalMachinesss = numberOfMachiness();
-                        coins -= totalPrize(prize, totalMachinesss);
-                        Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                        System.Threading.Thread.Sleep(6000);
-                        int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                        Console.WriteLine("Du vandt en total på " + wins + " coins");
-                        coins += wins;
-                        Console.WriteLine("Du har nu " + coins + " coins.");
+                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
+
+                        if (prizeOrPrizeCheck != -1)
+                        {
+                            coins -= prizeOrPrizeCheck;
+                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
+                            System.Threading.Thread.Sleep(6000);
+                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
+                            Console.WriteLine("Du vandt en total på " + wins + " coins");
+                            coins += wins;
+                            Console.WriteLine("Du har nu " + coins + " coins.");
+                        }
                     }
                     else if (reply == "3")
                     {
@@ -281,13 +307,18 @@ namespace CasinoDLCApp
                         risk = 9;
                         prize = basicPay * 10;
                         totalMachinesss = numberOfMachiness();
-                        coins -= totalPrize(prize, totalMachinesss);
-                        Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
-                        System.Threading.Thread.Sleep(6000);
-                        int wins = machineLoop(totalMachinesss, prize, risk, multipler);
-                        Console.WriteLine("Du vandt en total på " + wins + " coins");
-                        coins += wins;
-                        Console.WriteLine("Du har nu " + coins + " coins.");
+                        prizeOrPrizeCheck = totalPrize(prize, totalMachinesss, coins);
+
+                        if (prizeOrPrizeCheck != -1)
+                        {
+                            coins -= prizeOrPrizeCheck;
+                            Console.WriteLine("Du har nu " + coins + " coins tilbage. Held og lykke.");
+                            System.Threading.Thread.Sleep(6000);
+                            int wins = machineLoop(totalMachinesss, prize, risk, multipler);
+                            Console.WriteLine("Du vandt en total på " + wins + " coins");
+                            coins += wins;
+                            Console.WriteLine("Du har nu " + coins + " coins.");
+                        }
                     }
                 }
                 return coins;
