@@ -48,7 +48,7 @@ namespace CasinoDLCApp
                 else if (reply == "4")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Blackjack\".");
-                    BlackJack();
+                    BlackJack(playerCasinoCoins);
                 }
                 else if (reply == "5")
                 {
@@ -234,23 +234,44 @@ namespace CasinoDLCApp
                     }
                 }
             }
-            void BlackJack()
+            void BlackJack(int indsatCoins)
             {
+                //Insert coin amount
+                Console.Write("How many coins you want to bet on a game of BlackJack: ");
+                indsatCoins = int.Parse(Console.ReadLine());
+                if(indsatCoins > playerCasinoCoins)
+                {
+                    Console.WriteLine("The inserted amount of coins is invalid you only got " + playerCasinoCoins + " available.");
+                    Console.Write("Insert a valid amount of coins you want to bet on a game of BlackJack: ");
+                    indsatCoins = int.Parse(Console.ReadLine());
+                }
+
+                //Cards color
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                Blue();
+                Console.WriteLine("                                                    YOUR CARDS ARE BLUE");
+                Red();
+                Console.WriteLine("                                                    THE HOUSE CARDS IS RED");
+                Gray();
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+
                 //Generating a random card number
                 string[] array = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Es" };
                 Random randomNumber = new Random();
                 int husetsFørsteKort = randomNumber.Next(array.Length);
                 int husetsAndetKort = randomNumber.Next(array.Length);
+                Red();
                 Console.WriteLine("The house got " + array[husetsFørsteKort]);
+                Gray();
                 int spillerensFørsteKort = randomNumber.Next(array.Length);
                 int spillerensAndetKort = randomNumber.Next(array.Length);
-                Console.Write("Dine kort er: " + array[spillerensFørsteKort] + " & " + array[spillerensAndetKort]);
-                System.Threading.Thread.Sleep(5000);
-                Console.Clear();
-
-                //If house gets Black Jack
-                Console.WriteLine("The house got " + array[husetsFørsteKort] + " & " + array[husetsAndetKort]);
+                Blue();
                 Console.WriteLine("Your cards are: " + array[spillerensFørsteKort] + " & " + array[spillerensAndetKort]);
+                Gray();
+                //System.Threading.Thread.Sleep(5000);
+                //Console.Clear();
+
+                //House gets Black Jack
                 if (husetsFørsteKort == 12 && husetsAndetKort == 8 || husetsFørsteKort == 12 && husetsAndetKort == 9 || husetsFørsteKort == 12 && husetsAndetKort == 10 || husetsFørsteKort == 12 && husetsAndetKort == 11)
                 {
                     Console.WriteLine("House got BJ");
@@ -260,10 +281,11 @@ namespace CasinoDLCApp
                     Console.WriteLine("House got BJ");
                 }
 
-                //If you get Black Jack
+                //You get Black Jack
                 if (spillerensFørsteKort == 12 && spillerensAndetKort == 8 || spillerensFørsteKort == 12 && spillerensAndetKort == 9 || spillerensFørsteKort == 12 && spillerensAndetKort == 10 || spillerensFørsteKort == 12 && spillerensAndetKort == 11)
                 {
                     Console.WriteLine("You got a BJ");
+
                 }
                 else if (spillerensAndetKort == 12 && spillerensFørsteKort == 8 || spillerensAndetKort == 12 && spillerensFørsteKort == 9 || spillerensAndetKort == 12 && spillerensFørsteKort == 10 || spillerensAndetKort == 12 && spillerensFørsteKort == 11)
                 {
@@ -276,8 +298,35 @@ namespace CasinoDLCApp
                 if (drawOrStay.Contains("draw"))
                 {
                     int spillerensTredjeKort = randomNumber.Next(array.Length);
+                    Blue();
                     Console.WriteLine("You drew a " + spillerensTredjeKort);
+                    Console.WriteLine("Your cards are: " + array[spillerensFørsteKort] + " & " + array[spillerensAndetKort] + " & " + array[spillerensTredjeKort]);
+                    Red();
+                    Console.WriteLine("The house got " + array[husetsFørsteKort] + " & " + array[husetsAndetKort]);
+                    Gray();
                 }
+                else
+                {
+                    Red();
+                    Console.WriteLine("The house got " + array[husetsFørsteKort] + " & " + array[husetsAndetKort]);
+                    Blue();
+                    Console.WriteLine("Your cards are: " + array[spillerensFørsteKort] + " & " + array[spillerensAndetKort]);
+                    Gray();
+                }
+
+                void Gray()
+                {
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                void Red()
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                void Blue()
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+
             }
         }
 
