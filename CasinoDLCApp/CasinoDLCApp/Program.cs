@@ -156,8 +156,12 @@ namespace CasinoDLCApp
                     Console.Write("Player " + number2 + ": ");
                     goldarray[p] = int.Parse(Console.ReadLine());
                     Pool += goldarray[p];
-                    o++;
+                    p++;
                 }
+
+
+
+
             }
 
             static int slotMachine(int coins)
