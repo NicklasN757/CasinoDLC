@@ -46,7 +46,7 @@ namespace CasinoDLCApp
                 else if (reply == "3")
                 {
                     Console.WriteLine("Du har valgt nummer " + reply + ". Du spiller nu \"Slot Maskine\".");
-                    slotMachine(playerCasinoCoins);
+                    playerCasinoCoins = slotMachine(playerCasinoCoins);
                 }
                 else if (reply == "4")
                 {
